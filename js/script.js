@@ -51,7 +51,7 @@ guessButton.addEventListener("click", function (e) {
 });
 
 const inputValidation = function(letterInput){
-    const acceptedLetter = /[a-zA-Z]/;
+    const acceptedLetter = `/[a-zA-Z]/`;
     if(letterInput.length === 0){
         message.innerText = "Please enter a letter.";
     } else if(letterInput.length > 1){
@@ -124,3 +124,25 @@ const checkIfWin = function(){
      }
      
 };
+
+const startOver = function(){
+    guessButton.classList.add("hide");
+    remainingGuessesEl.classList.add("hide");
+    guessedLettersEl.classList.add("hide");
+    playAgainButton.classList.remove("hide");
+};
+
+playAgainButton.addEventListener("click", function(){
+    message.classList.remove("win");
+    guessedLetters = [];
+    remainingGuesses = 8;
+    remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
+    guessedLettersEl.innerHTML = " ";
+    
+    getWord();
+    
+    guessButton.classList.remove("hide");
+    remainingGuessesEl.classList.remove("hide");
+    guessedLettersEl.classList.removee("hide");
+    playAgainButton.classList.add("hide");
+});
